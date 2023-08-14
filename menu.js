@@ -27,6 +27,7 @@ function menuHeaderDec() {
 if( window.innerWidth>1060) {menuHeaderDec()}
     
 function menuHeaderMobil(){
+    let curent=0
     let dropDoun = Array().slice.call(
         document.getElementsByClassName("header_menu-box-button")
       );
@@ -34,17 +35,22 @@ function menuHeaderMobil(){
       let elemen =dropDoun[4]
         
         document .addEventListener("click", event => {
-           if(!(event.target.classList.contains("header_menu_content-3_img")||event.target.classList.contains("header_menu_content-3_menu-img"))) {
+           if(!(!curent==1&&(event.target.classList.contains("header_menu_content-3_img")||event.target.classList.contains("header_menu_content-3_menu-img")))) {
             for (let el of Array().slice.call(elemen.children[1].children)){
                 el.setAttribute("state", "noactive")
              }
+             curent=0
              return
            }
+
 
             for (let el of Array().slice.call(elemen.children[1].children)){
                el.setAttribute("state", "active")
     
             }
+            console.log(curent);
+           curent=1
+
         });
       
     
